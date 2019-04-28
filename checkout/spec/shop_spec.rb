@@ -22,4 +22,18 @@ describe Shop do
     expect(shop.checkout("AA")).to eq(100)
   end
 
+  it "returns 115 for ABCD" do
+    shop = Shop.new
+    expect(shop.checkout("ABCD")).to eq(115)
+  end
+
+  it "returns 130 for AAA" do
+    shop = Shop.new
+    expect(shop.checkout("AAA")).to eq(130)
+  end
+
+  it "returns 260 for AAAAAA" do
+    shop = Shop.new
+    expect(shop.checkout("AAAAAA")).to eq(260)
+  end
 end

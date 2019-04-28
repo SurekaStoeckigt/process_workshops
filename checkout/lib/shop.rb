@@ -1,5 +1,6 @@
 class Shop
 ALL_ITEMS = {A: 50, B: 30, C: 20, D: 15}
+SPECIAL_ITEMS = {A: (130.0 / 3.0 )}
 
   def initialize
     @price = 0
@@ -14,8 +15,14 @@ ALL_ITEMS = {A: 50, B: 30, C: 20, D: 15}
   end
 
   def calc_price(item)
-    item.chars.each do |char|
+    if item.chars.length % 3 == 0 && item.chars[0] == "A"
+      item.chars.each do |char|
+        @price += SPECIAL_ITEMS[char.to_sym]
+      end
+    else
+      item.chars.each do |char|
        @price += ALL_ITEMS[char.to_sym]
+     end
     end
     return @price
   end
